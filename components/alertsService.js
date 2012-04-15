@@ -55,8 +55,9 @@ function AlertsService_showAlertNotification(imageUrl,
     }).bind(this);
     ref.item.addEventListener("transitionend", doneOpeningHandler, false);
     if (this.panel.state == "closed") {
-        this.anchor.openPopupAtScreen(this.document.defaultView.screen.width,
-                                      this.document.defaultView.screen.height,
+        let screen = this.document.defaultView.screen;
+        this.anchor.openPopupAtScreen(screen.availLeft + screen.availWidth,
+                                      screen.availTop + screen.availHeight,
                                       false);
         this.panel.openPopup(this.anchor, "before_end", 0, 0, false, false, null);
     }
